@@ -1,0 +1,17 @@
+{% extends 'base_temp2.html' %}
+
+{% block one %}
+<h1>The following is the list of all the complains:</h1>
+    <p>Click on the title of the complain to address it</p>
+    <div class="complains">
+        {% for complain in complains %}
+            <h2><a href="{% url 'grievances:disp' id=complain.pk %}">{{ complain.title }}</a></h2>
+            <p>Registered On: {{ complain.date }}</p>
+            <p>Registered by {{complain.complainant.username}}</p>
+            <p>Status: {{ complain.status }}</p>
+            {% if complain.comments %}
+                <p>Comments: {{ complain.comments }}</p>
+            {% endif %}    
+        {% endfor %}
+    </div>
+{% endblock %}

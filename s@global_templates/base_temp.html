@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta-charset="utf-8">
+        <title>Complain List</title>
+    </head>
+    <body>
+        <header>
+            <h1>COMPLAINS</h1>
+            <div class="nav">
+                {% if user.is_authenticated %}
+                <ul>
+                    <li>
+                        <form class="logout-view" action="{% url 'accounts:logout' %}" method="POST">
+                            {% csrf_token %}
+                            <input type="submit" value="Log Out">
+                        </form>
+                    </li>
+                    <a href="{% url 'grievances:register' %}">Register New Complain</a>
+                </ul>
+                {% else %}
+                <a href="{% url 'accounts:login' %}">LogIn</a>
+                <a href="{% url 'accounts:signup' %}">SignUp</a>
+                {% endif %}
+            </div>
+        </header>        
+        <div class="wrap">
+            {% block one %}
+            {% endblock %}
+        </div>
+    </body>
+</html>

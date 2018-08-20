@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta-charset="utf-8">
+        <title>Complain List</title>
+    </head>
+    <body>
+        <header>
+            <h1>COMPLAINS</h1>
+            <div class="nav">
+                {% if user.is_authenticated %}
+                <ul>
+                    <li>
+                        <form class="logout-view" action="{% url 'resp:logout' %}" method="POST">
+                            {% csrf_token %}
+                            <input type="submit" value="Log Out">
+                        </form>
+                    </li>
+                </ul>
+                {% else %}
+                <a href="{% url 'resp:login' %}">LogIn as Respondent</a>
+                <a href="{% url 'resp:signup' %}">SignUp as Respondent</a>
+                {% endif %}
+            </div>
+        </header>        
+        <div class="wrap">
+            {% block one %}
+            {% endblock %}
+        </div>
+    </body>
+</html>

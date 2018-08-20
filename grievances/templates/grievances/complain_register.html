@@ -1,0 +1,12 @@
+{% extends 'base_temp.html' %}
+
+{% block one %}
+    <div class="create_article">
+        <h1>This is the Page to register a new complain</h1>
+        <form class="complain_register" action="{% url 'grievances:register' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Register Complain">
+        </form>
+    </div>
+{% endblock %}

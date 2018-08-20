@@ -1,0 +1,13 @@
+{% extends 'base_temp2.html' %}
+
+{% block one %}
+    <h2>{{ complain.title }}</a></h2></li>
+    <p>Description:{{ complain.body }}</p>
+    <p>Registered On: {{ complain.date }}</p>
+    <p>Registered by {{complain.complainant.username}}</p>
+    <form class="complain_update" action="{% url 'grievances:update' %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form }}
+        <input type="submit" value="Update Complain Status">
+    </form>
+{% endblock %}
